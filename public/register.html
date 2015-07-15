@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Regiter - DeFiesta</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script >
+		function checkRegister(frm) {
+
+			var p1 = document.getElementById("p1").value;
+			var p2 = document.getElementById("p2").value;
+
+			if(p1 == p2){
+			
+				url= '/register/new';
+				console.log(frm);
+
+				fd = new FormData(frm);
+
+				var xhr = new XMLHttpRequest;
+				xhr.open('POST', url, true);
+				
+				xhr.send(fd);
+			}
+			else{
+				console.log("password doesn't match: "+p1+" "+p2);
+			}
+
+
+			/*xhr = new  XMLHttpRequest();
+			
+			xhr.open('POST',url,true);
+			xhr.onreadystatechange = function(){
+				if(this.status==200 && this.readyState == 4){
+					
+					console.log(this.responseText);
+				}
+				
+			};
+			
+			xhr.send(params);*/
+			return false;
+		}
+
+	
+	</script>
+</head>
+<body id="blogin">
+
+	<form method="get" id="regForm" onsubmit="checkRegister(this); return false;"  accept-charset="utf-8">
+		<p> <input type="text" name="nombreu" placeholder="Nombre usuario" required> </p>
+		<p> <input type="password" id="p1" name="password" placeholder="Contraseña" required> </p>
+		<p> <input type="password"  id="p2" placeholder="Contraseña" required> </p>
+		<p> <input type="text" name="nombre" placeholder="Nombre" required> </p>
+		<p> <input type="text" name="apellidos" placeholder="Apellidos" required> </p>
+		<p> <input type="number" name="edad" placeholder="Edad" required> </p>
+		<p> <input type="email" name="email" placeholder="Email" required> </p>
+		<p> <label for="male">Male</label>
+		  <input type="radio" name="sexo" id="male" value="male"></p>
+		  
+		<p> <label for="female">Female</label>
+		  <input type="radio" name="sexo" id="female" value="female"></p>
+		<p> <input type="submit" value="Registrate"> </p>
+		
+	</form>
+	<div id="links">
+		<p><a href="/" >Login</a></p>
+		<p><a href="" >Quienes somos</a></p>
+	</div>
+	
+
+</body>
+</html>

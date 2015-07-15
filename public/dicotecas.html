@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Discotecas - DeFiesta</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script>
+
+	   function loadData(){
+	   	 url= '/getDiscos';
+		xhr = new  XMLHttpRequest();
+		xhr.open('GET',url,true);
+		xhr.onreadystatechange = function(){
+			if(this.status==200 && this.readyState == 4){
+				var content = JSON.parse(this.responseText);
+				var cont = document.getElementById("discos");
+				for(var i=0;i<content.length;i++){
+					var div = document.createElement('div');
+						var p = document.createElement('p');
+						var a = document.createElement('a');
+							a.href = "/discotecas/"+(content[i].replace(/ /g, "_"));
+							a.innerHTML=content[i];
+						p.appendChild(a);
+					div.appendChild(p);
+					cont.appendChild(div);
+				}
+				
+			}
+			
+		};
+		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xhr.send();
+		return false;
+	   }
+
+
+
+	</script>
+</head>
+<body id="body" onload="loadData();">
+
+	<header>
+		<p> Nombre</p>
+	</header>
+
+	<div id="discos">
+		
+	</div>
+	
+
+</body>
+</html>
