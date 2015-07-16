@@ -3,6 +3,10 @@
 <head>
 	<title>Regiter - DeFiesta</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+	<script src="/bower/angular/angular.min.js" type="text/javascript"></script>
+	<script src="/js/app.js" type="text/javascript"></script>
+
 	<script >
 		function checkRegister(frm) {
 
@@ -25,29 +29,16 @@
 				console.log("password doesn't match: "+p1+" "+p2);
 			}
 
-
-			/*xhr = new  XMLHttpRequest();
-			
-			xhr.open('POST',url,true);
-			xhr.onreadystatechange = function(){
-				if(this.status==200 && this.readyState == 4){
-					
-					console.log(this.responseText);
-				}
-				
-			};
-			
-			xhr.send(params);*/
-			return false;
 		}
+
 
 	
 	</script>
 </head>
-<body id="blogin">
+<body id="blogin" ng-controler="registerCtrl">
 
 	<form method="get" id="regForm" onsubmit="checkRegister(this); return false;"  accept-charset="utf-8">
-		<p> <input type="text" name="nombreu" placeholder="Nombre usuario" required> </p>
+		<p> <input type="text" name="nombreu" placeholder="Nombre usuario" required ng-model="nombreu"> </p>
 		<p> <input type="password" id="p1" name="password" placeholder="Contraseña" required> </p>
 		<p> <input type="password"  id="p2" placeholder="Contraseña" required> </p>
 		<p> <input type="text" name="nombre" placeholder="Nombre" required> </p>
@@ -59,6 +50,7 @@
 		  
 		<p> <label for="female">Female</label>
 		  <input type="radio" name="sexo" id="female" value="female"></p>
+		  <input type="file" name="foto" >
 		<p> <input type="submit" value="Registrate"> </p>
 		
 	</form>

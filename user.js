@@ -11,6 +11,7 @@ var userSchema = mongoose.Schema({
     email: {type: String, index: {unique: true, dropDups: true}},
     password: String,
     sexo: String,
+    foto: String,
     auth: {
     	exp_date: {type: Date},
     	token: {type: String, index: {unique: true}},
@@ -19,6 +20,11 @@ var userSchema = mongoose.Schema({
 });
 
 userSchema.statics.login = function(email,pass,success_callback,error_callback){
+
+	if(!email || !pass){
+		if(error_callback) error_callback();
+		return;
+	}
 
 	this.findOne({nombreu: email}).where("password").equals(pass).exec(function(err,res){
 
@@ -50,7 +56,7 @@ userSchema.statics.login = function(email,pass,success_callback,error_callback){
 }
 
 userSchema.statics.register = function(obj,success_callback){
-	console.log(obj.password);
+	console.log(obj);
 	obj.password = md5(obj.password);
 
 	var new_user =  this(obj);

@@ -62,8 +62,8 @@ discoSchema.statics.getDiscos = function(success_callback){
     if (!err){ 
     	var names = new Array();
     	docs.forEach(function(disc){
-    		names.push(disc.nombre); 
-    	});
+    		names.push({name:disc.nombre}); 
+    	});0
         success_callback(names);
     } else {console.log(err);}
 });

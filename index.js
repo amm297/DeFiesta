@@ -67,6 +67,7 @@ app.post('/login', function(req, res){
 	//user.model.findOne({email: req.email});
 	var email = req.body.email;
 	var pass = md5(req.body.pwd);
+	console.log("data: "+email+" "+pass);
 	user.model.login(email,pass,function(ress){
 		console.log(ress);
 
@@ -74,6 +75,7 @@ app.post('/login', function(req, res){
 		else{res.send("/discotecas");}
 		
 	},function(ress){
+		console.log("error_login");
 		disco.model.login(email,pass,function(resss){
 			console.log(resss);
 			res.send("/discoteca");
