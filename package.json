@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.13.2",
+    "busboy": "^0.2.9",
     "express": "^4.10.2",
     "mongoose": "^4.0.6",
-    "socket.io": "^1.3.5",
-    "body-parser": "^1.13.2"
+    "socket.io": "^1.3.5"
   },
   "devDependencies": {},
   "scripts": {
